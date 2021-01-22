@@ -7,8 +7,6 @@ import java.lang.reflect.UndeclaredThrowableException;
 
 /**
  * @description: JDK动态代理
- * @author: YCKJ2932
- * @create: 2021-01-07
  **/
 public class DynamicProxy implements InvocationHandler {
     /**

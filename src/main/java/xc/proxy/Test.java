@@ -1,9 +1,7 @@
 package xc.proxy;
 
 /**
- * @description:
- * @author: YCKJ2932
- * @create: 2021-01-07
+ * @description: 代理模式验证类
  **/
 public class Test {
     public static void main(String[] args) {

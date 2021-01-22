@@ -2,8 +2,6 @@ package xc.proxy;
 
 /**
  * @description: 静态代理模式
- * @author: YCKJ2932
- * @create: 2021-01-07
  **/
 public class StaticProxy implements Subject{
     private SubjectImpl subject;

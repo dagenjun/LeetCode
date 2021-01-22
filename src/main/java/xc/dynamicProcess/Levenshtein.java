@@ -3,9 +3,21 @@ package xc.dynamicProcess;
 import java.util.Scanner;
 
 /**
- * @description:
- * @author: YCKJ2932
- * @create: 2021-01-14
+ * Levenshtein Distance就是两个字符串A,B,我们需要使用原子操作将A转换为B：
+ *
+ * 字符串删除
+ * 字符串插入
+ * 字符替换（从技术上讲，它不止一个操作，但为了简单起见，我们称之为原子操作）
+ *
+ * 这个问题是通过有条理地解决起始字符串的子串的问题来处理的，逐渐增加子字符串的大小，直到它们等于起始字符串。
+ *
+ * 我们用于此问题的递归关系如下：
+ *
+ * 如果
+ * a == b则
+ * c（a，b）为0，如果
+ * a != b则
+ * c（a，b）为1。
  **/
 public class Levenshtein {
     public static void main(String[] args) {
