@@ -1,4 +1,4 @@
-package dynamicProcess;
+package xc.dynamicProcess;
 
 import jdk.nashorn.internal.parser.JSONParser;
 import org.w3c.dom.ls.LSOutput;

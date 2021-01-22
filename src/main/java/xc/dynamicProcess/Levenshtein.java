@@ -1,4 +1,4 @@
-package dynamicProcess;
+package xc.dynamicProcess;
 
 import java.util.Scanner;
 

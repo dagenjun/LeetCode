@@ -1,4 +1,4 @@
-package proxy;
+package xc.proxy;
 
 /**
  * @description: 静态代理模式
