@@ -8,7 +8,7 @@ import java.util.List;
  * @author: YCKJ2932
  * @create: 2021-01-22
  **/
-public class sumArrayAndNum {
+public class SumArrayAndNum {
     public static void main(String[] args) {
         int[] A = {0};
         int b = 1000;
