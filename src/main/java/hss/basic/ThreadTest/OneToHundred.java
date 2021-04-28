@@ -61,7 +61,7 @@ class Task1 implements Runnable {
     private CountDownLatch countDownLatch;
 
     public Task1(CountDownLatch countDownLatch) {
-        this.countDownLatch=countDownLatch;
+        this.countDownLatch = countDownLatch;
     }
 
     @Override
@@ -84,7 +84,6 @@ class Task1 implements Runnable {
             }
         }
         countDownLatch.countDown();
-
     }
 }
 
