@@ -32,6 +32,8 @@ public class OneToHundred {
 //            }
 //
 //        }
+        System.out.println(System.getProperty("java.class.path"));
+        System.out.println(ClassLoader.getSystemClassLoader());
         CountDownLatch countDownLatch = new CountDownLatch(2);
         //线程池实现
         ExecutorService executorService = Executors.newFixedThreadPool(2);
