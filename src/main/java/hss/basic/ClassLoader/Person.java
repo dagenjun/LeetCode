@@ -1,6 +1,9 @@
 package hss.basic.ClassLoader;
 
-public class person{
+/**
+ * @author HSS
+ */
+public class Person{
     private String name;
     private String sex;
 
