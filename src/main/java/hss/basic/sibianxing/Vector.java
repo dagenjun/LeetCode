@@ -5,11 +5,19 @@ package hss.basic.sibianxing;
  * @Date: 2021/6/1 11:45
  * @Description:
  */
-public class Vector {	Point start;
+public class Vector {
+    Point start;
     Point end;
     public Vector(Point start,Point end){
         this.start = start;
         this.end = end;
     }
 
+    @Override
+    public String toString() {
+        return "Vector{" +
+                "start=" + start +
+                ", end=" + end +
+                '}';
+    }
 }

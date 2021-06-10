@@ -1,6 +1,7 @@
 package hss.basic.sibianxing;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -14,20 +15,23 @@ public class pow {
         //初始化赋值过程
         List<Point> points = new ArrayList<Point>();
 
-        Point point = new Point(2, 3);
+        Point point = new Point(1, 2);
         points.add(point);
-        point = new Point(0, 1);
+        point = new Point(4, 5);
         points.add(point);
-        point = new Point(0, 0);
+        point = new Point(5, 5);
         points.add(point);
-        point = new Point(2, 2);
+        point = new Point(1, 1);
         points.add(point);
+        System.out.println("目标点集为"+points);
 
         List<Point> source = new ArrayList<>();
-        source.add(new Point(0,2));
+        source.add(new Point(2,4));
         source.add(new Point(2,2));
-        source.add(new Point(2,0));
-        source.add(new Point(0,0));
+        source.add(new Point(4,2));
+        source.add(new Point(4,4));
+
+
         double areaPercent = areaOverlapPerCent(points, source);
         System.out.println(areaPercent);
 
@@ -43,7 +47,9 @@ public class pow {
                 vectors.add(new Vector(source.get(i), source.get(i + 1)));
             }
         }
+        System.out.println("向量为 "+vectors);
         List<Point> polygon = Sutherland_Hodgeman(target, vectors);
+        System.out.println(polygon);
         return Math.abs(calculateArea(polygon) / calculateArea(source));
     }
 
@@ -117,7 +123,7 @@ public class pow {
 
     //求一个点是否在一条边的内侧，在点序为逆时针的时候（如果点在线上，也算在内侧）
     private static boolean isInside(Point p, Vector v) {
-        return Multi(p, v.start, v.end) <= 0 ? true : false;
+        return Multi(p, v.start, v.end) >= 0 ? true : false;
     }
 
 

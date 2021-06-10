@@ -5,6 +5,7 @@ package hss.basic.sibianxing;
  * @Date: 2021/6/1 11:44
  * @Description:
  */
+
 public class Point {
     public double x;
     public double y;
@@ -29,4 +30,11 @@ public class Point {
         return this.y;
     }
 
+    @Override
+    public String toString() {
+        return "Point{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
+    }
 }
