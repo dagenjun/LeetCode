@@ -15,54 +15,98 @@ public class DFS {
     public static void main(String[] args) {
         char[][] board = new char[][]{{'C', 'A', 'A'}, {'A', 'A', 'A'}, {'B', 'C', 'D'}};
         String word = "AAB";
-        char[] target = word.toCharArray();
-        int m = board.length;
-        int n = board[0].length;
-        //可以通过占位符替换原数组中的元素，递归结束后重新恢复赋值
-        int flag[][] = new int[m][n];
-        int k = 0;
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                if (dfs(board, target, flag, k, i, j)) {
-                    System.out.println(true);
-                    return;
-                }
-            }
-        }
-        System.out.println("over");
-        System.out.println(false);
+        System.out.println(exist(board,word));
     }
 
-    private static boolean dfs(char[][] board, char[] target, int[][] flag, int k, int i, int j) {
-        System.out.println("k:" + k + " i:" + i + " j:" + j);
-        if (k == target.length) {
-            System.out.println("符合要求");
-            return true;
-        } else if (i >= board.length || j >= board[0].length || i < 0 || j < 0) {
-            System.out.println("越界i:" + i + " j:" + j);
-            return false;
-        } else if (flag[i][j] == 1) {
-            System.out.println("重复i:" + i + " j:" + j);
-            return false;
-        } else {
-            System.out.println("继续搜索");
-            if (board[i][j] == target[k]) {
-                flag[i][j] = 1;
-                ++k;
-                //上下左右位移可以使用二维数组解决
-                // int[][] direct = {{-1, 0}, {0, -1}, {1, 0}, {0, 1}};
-                //int newX = x + direct[i][0];
-                //int newY = y + direct[i][1];
-                boolean res = dfs(board, target, flag, k, i - 1, j) ||
-                        dfs(board, target, flag, k, i, j - 1) ||
-                        dfs(board, target, flag, k, i + 1, j) ||
-                        dfs(board, target, flag, k, i, j + 1);
-                flag[i][j] = 0;
-                return res;
-            } else {
-                System.out.println("结束");
-                return false;
+        public static boolean exist(char[][] board, String word) {
+            int h = board.length, w = board[0].length;
+            boolean[][] visited = new boolean[h][w];
+            for (int i = 0; i < h; i++) {
+                for (int j = 0; j < w; j++) {
+                    boolean flag = check(board, visited, i, j, word, 0);
+                    if (flag) {
+                        return true;
+                    }
+                }
             }
+            return false;
         }
-    }
+
+        public static boolean check(char[][] board, boolean[][] visited, int i, int j, String s, int k) {
+            if (board[i][j] != s.charAt(k)) {
+                return false;
+            } else if (k == s.length() - 1) {
+                return true;
+            }
+            visited[i][j] = true;
+            int[][] directions = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+            boolean result = false;
+            for (int[] dir : directions) {
+                int newi = i + dir[0], newj = j + dir[1];
+                if (newi >= 0 && newi < board.length && newj >= 0 && newj < board[0].length) {
+                    if (!visited[newi][newj]) {
+                        boolean flag = check(board, visited, newi, newj, s, k + 1);
+                        if (flag) {
+                            result = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            visited[i][j] = false;
+            return result;
+        }
+        //解法数据量大时超时
+//    public static boolean exist(char[][] board, String word) {
+//        char[] target = word.toCharArray();
+//        int m = board.length;
+//        int n = board[0].length;
+//        //可以通过占位符替换原数组中的元素，递归结束后重新恢复赋值
+//        int flag[][] = new int[m][n];
+//        int k = 0;
+//        for (int i = 0; i < m; i++) {
+//            for (int j = 0; j < n; j++) {
+//                if (dfs(board, target, flag, k, i, j)) {
+//                    System.out.println(true);
+//                    return;
+//                }
+//            }
+//        }
+//        System.out.println("over");
+//        System.out.println(false);
+//    }
+//
+//    private static boolean dfs(char[][] board, char[] target, int[][] flag, int k, int i, int j) {
+//        System.out.println("k:" + k + " i:" + i + " j:" + j);
+//        if (k == target.length) {
+//            System.out.println("符合要求");
+//            return true;
+//        } else if (i >= board.length || j >= board[0].length || i < 0 || j < 0) {
+//            System.out.println("越界i:" + i + " j:" + j);
+//            return false;
+//        } else if (flag[i][j] == 1) {
+//            System.out.println("重复i:" + i + " j:" + j);
+//            return false;
+//        } else {
+//            System.out.println("继续搜索");
+//            if (board[i][j] == target[k]) {
+//                flag[i][j] = 1;
+//                ++k;
+//                //上下左右位移可以使用二维数组解决
+//                // int[][] direct = {{-1, 0}, {0, -1}, {1, 0}, {0, 1}};
+//                //int newX = x + direct[i][0];
+//                //int newY = y + direct[i][1];
+//                boolean res = dfs(board, target, flag, k, i - 1, j) ||
+//                        dfs(board, target, flag, k, i, j - 1) ||
+//                        dfs(board, target, flag, k, i + 1, j) ||
+//                        dfs(board, target, flag, k, i, j + 1);
+//                flag[i][j] = 0;
+//                return res;
+//            } else {
+//                System.out.println("结束");
+//                return false;
+//            }
+//        }
+//    }
+
 }

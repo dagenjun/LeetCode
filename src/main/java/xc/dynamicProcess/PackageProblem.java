@@ -1,7 +1,11 @@
 package xc.dynamicProcess;
 
 /**
- * @description:
+ * @description: 吉他价值1500，占容量1，笔记本电脑价值2000，占容量3，音响价值3000，占容量4。
+ * 思路：
+ * 先初始化一种商品在不同背包容量下的价值，然后在叠加一个商品，比较当前背包是否可以容纳下现有商品，根据空间找到对应的价值，
+ * 如果能装下，也就是当前价值+剩余空间可换取的价值，需要和不装当前商品时，同一容量背包的价值(数组的同一列上一行)比较，取最大值，
+ * 如果当前背包装不下，说明只能放下除现有商品，及之前的所有商品，也就是数组的同一列上一行
  * @author: YCKJ2932
  * @create: 2021-06-24
  **/
@@ -23,8 +27,8 @@ public class PackageProblem {
         BagObject tap = new BagObject(3, 2000);
         BagObject radio = new BagObject(4, 3000);
         BagObject[] objs = new BagObject[3];
-        objs[1] = guiter;
-        objs[2] = tap;
+        objs[2] = guiter;
+        objs[1] = tap;
         objs[0] = radio;
         PackageProblem pp = new PackageProblem(4, objs);
         System.out.println("result:" + pp.getMaxValue());
@@ -35,7 +39,7 @@ public class PackageProblem {
         int nowcap = objs[0].capaticy;
         int i, j;
         for (i = 1; i <= cap; i++) {
-            if (i >= nowcap && dp[1][i] < nowval) {
+            if (i >= nowcap) {
                 dp[1][i] = nowval;
             }
         }
@@ -43,7 +47,7 @@ public class PackageProblem {
             nowcap = objs[i-1].capaticy;
             nowval = objs[i-1].value;
             for (j = 1; j <= cap; j++) {
-                if (j - nowcap > 0) {
+                if (j - nowcap >= 0) {
                     dp[i][j] = Math.max(dp[i - 1][j], nowval + dp[i - 1][j - nowcap]);
                 } else {
                     dp[i][j] = dp[i - 1][j];
