@@ -12,6 +12,5 @@ public class TestString {
         String s2=a.toString();
         String s3=String.valueOf(a);
         System.out.println(s1+s2+s3);
-
     }
 }
