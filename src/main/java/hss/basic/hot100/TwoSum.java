@@ -1,4 +1,4 @@
-package hss.basic.array;
+package hss.basic.hot100;
 
 import java.util.HashMap;
 
