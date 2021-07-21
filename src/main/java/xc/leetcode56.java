@@ -1,4 +1,4 @@
-package xc.proxy;
+package xc;
 
 import java.util.ArrayList;
 import java.util.Arrays;
