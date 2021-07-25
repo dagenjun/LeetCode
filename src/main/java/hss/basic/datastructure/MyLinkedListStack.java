@@ -1,6 +1,7 @@
 package hss.basic.datastructure;
 
 import java.util.LinkedList;
+import java.util.Queue;
 
 public class MyLinkedListStack<T> {
     private LinkedList<T> stack = new LinkedList<>();
